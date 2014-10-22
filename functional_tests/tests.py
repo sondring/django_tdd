@@ -3,7 +3,7 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-os.environ['DJANGO_LIVE_TEST_SERVER_ADDRESS'] = 'localhost:8001'
+os.environ['DJANGO_LIVE_TEST_SERVER_ADDRESS'] = 'localhost:8002'
 
 class NewVisitorTest(LiveServerTestCase):
 
@@ -69,12 +69,12 @@ class NewVisitorTest(LiveServerTestCase):
 		# list
 		self.browser.get(self.live_server_url)
 		page_text = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn('Buy peacock feathers, page_text')
+		self.assertNotIn('Buy peacock feathers', page_text)
 		self.assertNotIn('make a fly', page_text)
 
 		# Francis starts a new list by entering a new item. He
 		# is less interesting than Edith...
-		inoutbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.browser.find_element_by_id('id_new_item')
 		inputbox.send_keys('Buy milk')
 		inputbox.send_keys(Keys.ENTER)
 
