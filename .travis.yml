@@ -1,0 +1,11 @@
+language: python
+services:
+  - sqlite3
+python:
+  - 3.4
+install:
+  - pip install -r requirements.txt
+before_script:
+  - echo hostname
+script:
+  - python manage.py test
