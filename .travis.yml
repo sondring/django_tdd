@@ -8,4 +8,5 @@ install:
 before_script:
   - echo hostname
 script:
-  - python manage.py test
+  - python manage.py test lists
+  - python manage.py functional_tests --liveserver=superlists-staging.lottoup.com
